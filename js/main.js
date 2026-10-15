@@ -420,50 +420,44 @@ function initStrategyInspector() {
 
   const strategyData = [
     {
-      badge: 'STEP 01 — AUDIENCE',
-      title: 'Who are we trying to reach and what do they care about?',
-      body: 'Before writing a script or opening editing tools, understand the viewer’s perspective. What problem are they trying to solve right now? What questions or frustrations do they have throughout their day? What language speaks directly to them?',
+      badge: '01 — UNDERSTAND',
+      title: 'Who are we creating for?',
+      body: 'Before writing a script or opening editing software, clarify the viewer’s perspective. What problem are they trying to solve right now? What stresses or frustrates them? What speaks their natural language?',
       meta: 'PRACTICAL FOCUS: Empathy for the viewer’s current state and real everyday questions.'
     },
     {
-      badge: 'STEP 02 — OBJECTIVE',
-      title: 'What should this piece of content achieve?',
+      badge: '02 — DEFINE',
+      title: 'What should this content achieve?',
       body: 'Define a single clear goal for each asset: earning broad discovery, teaching an actionable workflow, building community trust, or driving viewers to a link. Single-purpose content prevents mixed signals.',
       meta: 'PRACTICAL FOCUS: One clear outcome per post instead of trying to do everything at once.'
     },
     {
-      badge: 'STEP 03 — CONTENT IDEA',
-      title: 'What useful, interesting or entertaining idea can earn attention?',
+      badge: '03 — CREATE',
+      title: 'What idea deserves attention?',
       body: 'Develop an idea that genuinely respects the viewer’s time—a practical shortcut, an honest breakdown of a common struggle, a behind-the-scenes look at real work, or a relatable situation that feels authentic.',
       meta: 'PRACTICAL FOCUS: Value-dense content that people want to save or share with a friend.'
     },
     {
-      badge: 'STEP 04 — HOOK',
-      title: 'Why would someone stop scrolling?',
-      body: 'The opening 1–2 seconds must give the viewer an immediate reason to pause. Use a clear visual action, an intriguing statement, or bold on-screen text that makes viewers curious before their thumb scrolls past.',
-      meta: 'PRACTICAL FOCUS: Immediate visual or verbal clarity without slow introductions.'
-    },
-    {
-      badge: 'STEP 05 — FORMAT',
-      title: 'Which format fits the idea and platform?',
-      body: 'Match the concept to the right platform canvas: 9:16 vertical video for fast visual ideas and energy; multi-slide carousels for step-by-step frameworks; high-contrast thumbnails for YouTube tutorials.',
+      badge: '04 — ADAPT',
+      title: 'How should the idea work on this platform?',
+      body: 'Match the concept to the right platform canvas: 9:16 vertical video for fast visual rhythm and energy; multi-slide carousels for step-by-step frameworks; high-contrast thumbnails for YouTube tutorials.',
       meta: 'PRACTICAL FOCUS: Native format execution rather than identical cross-posting.'
     },
     {
-      badge: 'STEP 06 — CTA (CALL TO ACTION)',
-      title: 'What should the viewer do next?',
-      body: 'Give one simple, natural next step: "Save this for exams", "Share with someone who needs this", or a direct question in the caption that invites meaningful comments and conversation.',
+      badge: '05 — PUBLISH',
+      title: 'What format, caption and CTA fit?',
+      body: 'Pair the finished asset with a scannable caption and one simple, low-friction next step: "Save this for Sunday prep", "Share with someone who needs this", or a direct question that invites meaningful discussion.',
       meta: 'PRACTICAL FOCUS: Low-friction action that feels natural, not pushy.'
     },
     {
-      badge: 'STEP 07 — MEASURE',
-      title: 'What signals tell us whether it worked?',
-      body: 'Look at real engagement signals: retention drop-off points, average watch time, save-to-reach ratio, and qualitative comments to understand what actually resonated with viewers.',
+      badge: '06 — LEARN',
+      title: 'What does the audience response tell us?',
+      body: 'Look at real audience signals: retention drop-off points, average watch time, save-to-reach ratio, and qualitative comments to understand what actually resonated with viewers.',
       meta: 'PRACTICAL FOCUS: Objective feedback from real viewers to learn what worked.'
     },
     {
-      badge: 'STEP 08 — ITERATE',
-      title: 'What should we change in the next piece?',
+      badge: '07 — ITERATE',
+      title: 'What should change next?',
       body: 'Take what the audience and comments revealed and apply it directly to the next batch: tighten pacing where viewers dropped off, turn top comments into new videos, and double down on winning formats.',
       meta: 'PRACTICAL FOCUS: Continuous improvement grounded in real performance.'
     }
