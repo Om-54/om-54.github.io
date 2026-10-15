@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-1920" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="grad-1920" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16161a" />
+      <stop offset="50%" stop-color="#111114" />
+      <stop offset="100%" stop-color="#0b0b0e" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#grad-1920)" />
+  <rect width="1920" height="1080" fill="url(#grid-1920)" />
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="6 6" rx="12" />
+
+  <!-- Center Content Badge -->
+  <g transform="translate(960.0, 540.0)">
+    <!-- Outer Icon Circle -->
+    <circle r="129.6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+    
+    <!-- Upload Icon -->
+    <path d="M -18 8 L 0 -10 L 18 8 M 0 -10 L 0 20 M -32 24 L 32 24" fill="none" stroke="#ff5c4d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(1.944) translate(0, -6)"/>
+
+    <!-- Primary Label -->
+    <rect x="-180" y="172.8" width="360" height="46" rx="23" fill="#ff5c4d" />
+    <text x="0" y="200.8" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">[UPLOAD ACTUAL WORK]</text>
+
+    <!-- Title -->
+    <text x="0" y="257.8" font-family="'Syne', system-ui, sans-serif" font-size="24" font-weight="700" fill="#f4f4f6" text-anchor="middle" letter-spacing="0.5">LEMON IDEAS — CAMPAIGN</text>
+
+    <!-- Aspect & Instructions -->
+    <text x="0" y="292.8" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#a1a1aa" text-anchor="middle">16:9 Campaign Creative</text>
+    <text x="0" y="322.8" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="400" fill="#71717a" text-anchor="middle">Recommended: 1920x1080 JPG / PNG</text>
+  </g>
+
+  <!-- Top-left tag -->
+  <g transform="translate(48, 56)">
+    <rect width="130" height="28" rx="6" fill="rgba(255,255,255,0.06)" />
+    <text x="65" y="18" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#ff5c4d" text-anchor="middle" letter-spacing="1">READY TO SWAP</text>
+  </g>
+
+  <!-- Bottom-right file hint -->
+  <text x="1872" y="1036" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="500" fill="#52525b" text-anchor="end">assets/lemon-ideas/lemon-campaign-01.svg</text>
+</svg>

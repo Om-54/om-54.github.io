@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b130e"/>
+      <stop offset="40%" stop-color="#111d15"/>
+      <stop offset="100%" stop-color="#070a08"/>
+    </linearGradient>
+    <linearGradient id="goldLemon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <linearGradient id="greenLemon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+
+  <!-- Stage Lighting Atmosphere -->
+  <circle cx="600" cy="200" r="320" fill="#facc15" opacity="0.08" filter="blur(80px)"/>
+  <circle cx="200" cy="500" r="250" fill="#15803d" opacity="0.12" filter="blur(90px)"/>
+
+  <!-- Grid Accents -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="240" y1="0" x2="240" y2="675"/>
+    <line x1="480" y1="0" x2="480" y2="675"/>
+    <line x1="720" y1="0" x2="720" y2="675"/>
+    <line x1="960" y1="0" x2="960" y2="675"/>
+  </g>
+
+  <!-- Top Event Badge -->
+  <rect x="80" y="60" width="310" height="38" rx="6" fill="#1e2922" stroke="#2e4235" stroke-width="1.5"/>
+  <circle cx="100" cy="79" r="5" fill="#facc15"/>
+  <text x="118" y="84" fill="#fef08a" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" letter-spacing="1.5">LEMON IDEAS • OFFICIAL EVENT</text>
+
+  <!-- Event Headline -->
+  <text x="80" y="160" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="52" font-weight="900" letter-spacing="-1.5">
+    INNOPRENEURS <tspan fill="#facc15">SEASON 11</tspan>
+  </text>
+  <text x="80" y="210" fill="#a7f3d0" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="700">
+    Finale &amp; Grand Finale — Startup Pitching Session
+  </text>
+  <text x="80" y="245" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="400">
+    Featuring Techdome Catalyst • Live Founder Pitches &amp; Investor Showcase
+  </text>
+
+  <!-- Pitching Stage Card Mockup -->
+  <g transform="translate(80, 290)">
+    <!-- Stage Card -->
+    <rect width="640" height="300" rx="12" fill="#131e17" stroke="#22382b" stroke-width="1.5"/>
+    
+    <!-- Stage Screen Graphic -->
+    <rect x="24" y="24" width="592" height="180" rx="8" fill="#0d1410"/>
+    <!-- Stage Spotlight Effect -->
+    <polygon points="320,30 180,200 460,200" fill="#facc15" opacity="0.12"/>
+    
+    <!-- Pitch Podium & Speaker Silhouette -->
+    <rect x="290" y="130" width="60" height="70" rx="3" fill="#1f2923"/>
+    <circle cx="320" cy="115" r="14" fill="#facc15"/>
+    
+    <!-- Onscreen Text -->
+    <text x="50" y="60" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">LIVE PITCH STAGE</text>
+    <text x="50" y="90" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800">Techdome Catalyst</text>
+    <text x="50" y="115" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Startup Pitching &amp; Jury Q&amp;A</text>
+    
+    <!-- Card Meta Footer -->
+    <g transform="translate(24, 230)">
+      <text x="0" y="20" fill="#6ee7b7" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">PRODUCTION SCOPE:</text>
+      <text x="0" y="42" fill="#e2e8f0" font-family="'Plus Jakarta Sans', sans-serif" font-size="14">Event Video Recording, Pitch Capture &amp; Multi-Cam Coverage</text>
+    </g>
+  </g>
+
+  <!-- Right Side Play Callout Box -->
+  <g transform="translate(760, 290)">
+    <rect width="360" height="300" rx="12" fill="#141a16" stroke="#facc15" stroke-width="2" stroke-opacity="0.4"/>
+    
+    <!-- Big Glowing Play Button -->
+    <circle cx="180" cy="110" r="54" fill="url(#goldLemon)" filter="url(#glow)"/>
+    <polygon points="172,92 198,110 172,128" fill="#000000"/>
+    
+    <text x="180" y="200" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" text-anchor="middle">WATCH PITCH VIDEO</text>
+    <text x="180" y="230" fill="#fef08a" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" text-anchor="middle">INNOPRENEURS SEASON 11</text>
+    <text x="180" y="260" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" text-anchor="middle">Google Drive Full HD (16:9)</text>
+  </g>
+</svg>

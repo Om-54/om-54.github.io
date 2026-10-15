@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a66c2"/>
+      <stop offset="100%" stop-color="#004182"/>
+    </linearGradient>
+    <linearGradient id="coralGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5242"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="0" y1="750" x2="1200" y2="750"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+  </g>
+
+  <!-- Glowing Accent Circles -->
+  <circle cx="200" cy="180" r="160" fill="#0a66c2" opacity="0.12" filter="blur(60px)"/>
+  <circle cx="1020" cy="700" r="200" fill="#ff5242" opacity="0.08" filter="blur(80px)"/>
+
+  <!-- Top Header Tag -->
+  <rect x="80" y="70" width="220" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="98" cy="88" r="4" fill="#0a66c2"/>
+  <text x="114" y="93" fill="#93c5fd" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600" letter-spacing="1.5">PRODUCT GROWTH CASE STUDY</text>
+
+  <!-- Main Headline -->
+  <text x="80" y="155" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800" letter-spacing="-1">
+    LinkedIn: User Growth &amp; AARRR Funnel
+  </text>
+  <text x="80" y="195" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="400">
+    Identifying New-User Activation Bottlenecks &amp; Proposing Goal-Based Onboarding
+  </text>
+
+  <!-- AARRR Funnel Visual Diagram -->
+  <g transform="translate(80, 240)">
+    
+    <!-- Step 1: ACQUISITION -->
+    <g transform="translate(0, 0)" filter="url(#shadow)">
+      <rect width="200" height="340" rx="10" fill="#131722" stroke="#1e293b" stroke-width="1.5"/>
+      <rect x="0" y="0" width="200" height="6" rx="3" fill="#0a66c2"/>
+      <text x="20" y="38" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">STAGE 01</text>
+      <text x="20" y="65" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">Acquisition</text>
+      <line x1="20" y1="85" x2="180" y2="85" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="115" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Organic SEO Indexing</text>
+      <text x="20" y="145" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Network Invite Loops</text>
+      <text x="20" y="175" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Public Profile Views</text>
+      <rect x="20" y="270" width="160" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="30" y="296" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">INPUT: SIGNUPS</text>
+    </g>
+
+    <!-- Arrow 1 -->
+    <path d="M 205 170 L 225 170" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 2: ACTIVATION (FEATURED OPPORTUNITY) -->
+    <g transform="translate(230, -20)" filter="url(#shadow)">
+      <rect width="225" height="380" rx="12" fill="#161e31" stroke="#ff5242" stroke-width="2"/>
+      <rect x="0" y="0" width="225" height="8" rx="4" fill="url(#coralGlow)"/>
+      <rect x="16" y="20" width="193" height="26" rx="4" fill="rgba(255, 82, 66, 0.15)"/>
+      <text x="25" y="37" fill="#ff7666" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">★ CORE GROWTH LEVER</text>
+      <text x="20" y="75" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">STAGE 02</text>
+      <text x="20" y="105" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800">Activation</text>
+      <line x1="20" y1="125" x2="205" y2="125" stroke="#334155" stroke-width="1"/>
+      <text x="20" y="155" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700">Goal-Based Onboarding</text>
+      <text x="20" y="180" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400">Guiding user to immediate</text>
+      <text x="20" y="200" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400">value milestone based on</text>
+      <text x="20" y="220" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400">declared career intent.</text>
+      <rect x="20" y="295" width="185" height="55" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="32" y="318" fill="#facc15" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">PRIMARY METRIC:</text>
+      <text x="32" y="337" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Activation Rate (D7)</text>
+    </g>
+
+    <!-- Arrow 2 -->
+    <path d="M 460 170 L 480 170" stroke="#334155" stroke-width="2"/>
+
+    <!-- Step 3: RETENTION -->
+    <g transform="translate(485, 0)" filter="url(#shadow)">
+      <rect width="180" height="340" rx="10" fill="#131722" stroke="#1e293b" stroke-width="1.5"/>
+      <rect x="0" y="0" width="180" height="6" rx="3" fill="#0a66c2"/>
+      <text x="20" y="38" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">STAGE 03</text>
+      <text x="20" y="65" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">Retention</text>
+      <line x1="20" y1="85" x2="160" y2="85" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="115" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Relevant Feeds</text>
+      <text x="20" y="145" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Connection Alerts</text>
+      <text x="20" y="175" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Creator Updates</text>
+      <rect x="20" y="270" width="140" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="30" y="296" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">METRIC: D30</text>
+    </g>
+
+    <!-- Arrow 3 -->
+    <path d="M 670 170 L 690 170" stroke="#334155" stroke-width="2"/>
+
+    <!-- Step 4: REVENUE -->
+    <g transform="translate(695, 0)" filter="url(#shadow)">
+      <rect width="170" height="340" rx="10" fill="#131722" stroke="#1e293b" stroke-width="1.5"/>
+      <rect x="0" y="0" width="170" height="6" rx="3" fill="#0a66c2"/>
+      <text x="20" y="38" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">STAGE 04</text>
+      <text x="20" y="65" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">Revenue</text>
+      <line x1="20" y1="85" x2="150" y2="85" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="115" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Premium Career</text>
+      <text x="20" y="145" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Sales Nav / InMail</text>
+      <text x="20" y="175" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500">• Sponsored Ads</text>
+      <rect x="20" y="270" width="130" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="30" y="296" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">MONETIZATION</text>
+    </g>
+
+    <!-- Arrow 4 -->
+    <path d="M 870 170 L 890 170" stroke="#334155" stroke-width="2"/>
+
+    <!-- Step 5: REFERRAL -->
+    <g transform="translate(895, 0)" filter="url(#shadow)">
+      <rect width="145" height="340" rx="10" fill="#131722" stroke="#1e293b" stroke-width="1.5"/>
+      <rect x="0" y="0" width="145" height="6" rx="3" fill="#0a66c2"/>
+      <text x="18" y="38" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">STAGE 05</text>
+      <text x="18" y="65" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">Referral</text>
+      <line x1="18" y1="85" x2="127" y2="85" stroke="#1e293b" stroke-width="1"/>
+      <text x="18" y="115" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="500">• Graph Virality</text>
+      <text x="18" y="145" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="500">• Colleague Ping</text>
+      <text x="18" y="175" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="500">• Shared Posts</text>
+      <rect x="18" y="270" width="110" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="26" y="296" fill="#a855f7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">K-FACTOR</text>
+    </g>
+  </g>
+
+  <!-- Bottom Evaluation Matrix & Callout -->
+  <g transform="translate(80, 670)">
+    <rect width="1040" height="150" rx="12" fill="#111827" stroke="#1f2937" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="25" y="25" width="280" height="100" rx="8" fill="#1f2937"/>
+    <text x="45" y="55" fill="#60a5fa" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">EXPERIMENT SCOPE</text>
+    <text x="45" y="80" fill="#f3f4f6" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700">Goal-Based User Onboarding</text>
+    <text x="45" y="103" fill="#9ca3af" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400">Declared Intent → Value in &lt; 3 mins</text>
+
+    <rect x="330" y="25" width="340" height="100" rx="8" fill="#1f2937"/>
+    <text x="350" y="55" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">PRIMARY EVALUATION METRIC</text>
+    <text x="350" y="80" fill="#f3f4f6" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700">New-User Activation Rate (% D7)</text>
+    <text x="350" y="103" fill="#9ca3af" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400">Reaching 30+ Relevant Connections</text>
+
+    <rect x="695" y="25" width="320" height="100" rx="8" fill="#1e293b" stroke="#0a66c2" stroke-width="1"/>
+    <text x="715" y="55" fill="#f59e0b" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">COMPLETE NOTION CASE STUDY</text>
+    <text x="715" y="80" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700">Full Teardown &amp; Hypotheses</text>
+    <text x="715" y="103" fill="#93c5fd" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">Click Card to Read on Notion ↗</text>
+  </g>
+</svg>
