@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalLightbox();
   updateCategoryCounts();
   initStrategyInspector();
-  initAARRRFunnel();
-  initHeroCockpit();
   initHeroAmbientSpotlight();
 
   // The 12 Animation System Initializers (Refined, Touch-Safe & Editorial)
@@ -422,52 +420,52 @@ function initStrategyInspector() {
 
   const strategyData = [
     {
-      badge: 'STEP 01 — AUDIENCE ARCHITECTURE',
-      title: 'Deconstructing Viewer Psychology Before Touching the Timeline',
-      body: 'Every high-performing post begins with deep empathy for the viewer’s state. For college students, that means targeting exam bottlenecks, all-nighter struggles, and skepticism toward corporate software hype.',
-      meta: 'STRATEGIC GOAL: Map authentic student vernacular, fears, and high-friction daily tasks.'
+      badge: 'STEP 01 — AUDIENCE',
+      title: 'Who are we trying to reach and what do they care about?',
+      body: 'Before writing a script or opening editing tools, understand the viewer’s perspective. What problem are they trying to solve right now? What questions or frustrations do they have throughout their day? What language speaks directly to them?',
+      meta: 'PRACTICAL FOCUS: Empathy for the viewer’s current state and real everyday questions.'
     },
     {
-      badge: 'STEP 02 — OBJECTIVE & ALGORITHMIC TARGET',
-      title: 'Defining What Metric Signals "Success" for Each Asset',
-      body: 'Clarify whether a post aims for top-of-funnel reach (shares/views), mid-funnel education (watch-time/saves), or product trial (link bio clicks). Single-focus content prevents diluted audience response.',
-      meta: 'STRATEGIC GOAL: Align creative rhythm with Instagram / YouTube algorithmic recommendation signals.'
+      badge: 'STEP 02 — OBJECTIVE',
+      title: 'What should this piece of content achieve?',
+      body: 'Define a single clear goal for each asset: earning broad discovery, teaching an actionable workflow, building community trust, or driving viewers to a link. Single-purpose content prevents mixed signals.',
+      meta: 'PRACTICAL FOCUS: One clear outcome per post instead of trying to do everything at once.'
     },
     {
-      badge: 'STEP 03 — CONTENT PILLAR GOVERNANCE',
-      title: 'Balancing the Thematic Mix Across 5 Intentional Buckets',
-      body: 'Organize daily production into Educate, Entertain, Demonstrate, Community, and Trend buckets. This guarantees thematic breadth so feeds never feel like repetitive advertisements.',
-      meta: 'STRATEGIC GOAL: Sustain high weekly publishing volume without audience fatigue.'
+      badge: 'STEP 03 — CONTENT IDEA',
+      title: 'What useful, interesting or entertaining idea can earn attention?',
+      body: 'Develop an idea that genuinely respects the viewer’s time—a practical shortcut, an honest breakdown of a common struggle, a behind-the-scenes look at real work, or a relatable situation that feels authentic.',
+      meta: 'PRACTICAL FOCUS: Value-dense content that people want to save or share with a friend.'
     },
     {
-      badge: 'STEP 04 — PLATFORM-NATIVE FORMAT SELECTION',
-      title: 'Selecting the Canvas Dimensions for Maximum Dwell Time',
-      body: 'Tailor asset anatomy to platform norms: 9:16 vertical video for fast hook velocity; 4:5 portrait swipe carousels for dense LinkedIn frameworks; 16:9 for YouTube search intent.',
-      meta: 'STRATEGIC GOAL: Zero lazy cross-posting; format compliance boosts organic feed distribution.'
+      badge: 'STEP 04 — HOOK',
+      title: 'Why would someone stop scrolling?',
+      body: 'The opening 1–2 seconds must give the viewer an immediate reason to pause. Use a clear visual action, an intriguing statement, or bold on-screen text that makes viewers curious before their thumb scrolls past.',
+      meta: 'PRACTICAL FOCUS: Immediate visual or verbal clarity without slow introductions.'
     },
     {
-      badge: 'STEP 05 — 1.5-SECOND HOOK ENGINEERING',
-      title: 'Stopping Thumb Momentum in the Opening 2 Seconds',
-      body: 'The first 1.5s determines whether a viewer stays or scrolls. We test contrarian, curated listicle, and live experiment hooks that instantly disrupt cognitive feed momentum.',
-      meta: 'STRATEGIC GOAL: Achieve 40%+ 3-second hook rate to trigger algorithmic push.'
+      badge: 'STEP 05 — FORMAT',
+      title: 'Which format fits the idea and platform?',
+      body: 'Match the concept to the right platform canvas: 9:16 vertical video for fast visual ideas and energy; multi-slide carousels for step-by-step frameworks; high-contrast thumbnails for YouTube tutorials.',
+      meta: 'PRACTICAL FOCUS: Native format execution rather than identical cross-posting.'
     },
     {
-      badge: 'STEP 06 — LOW-FRICTION CALL-TO-ACTION (CTA)',
-      title: 'Guiding the Viewer Toward One Clear, Low-Friction Step',
-      body: 'Match the CTA to the content type: "Save this for exams" drives save signals; "Comment your tool" triggers algorithmic comment ranking. Never ask for three things at once.',
-      meta: 'STRATEGIC GOAL: Convert passive attention into measurable audience engagement.'
+      badge: 'STEP 06 — CTA (CALL TO ACTION)',
+      title: 'What should the viewer do next?',
+      body: 'Give one simple, natural next step: "Save this for exams", "Share with someone who needs this", or a direct question in the caption that invites meaningful comments and conversation.',
+      meta: 'PRACTICAL FOCUS: Low-friction action that feels natural, not pushy.'
     },
     {
-      badge: 'STEP 07 — RETENTION MEASUREMENT & SIGNAL AUDIT',
-      title: 'Reading Retention Curves & Qualitative Viewer Feedback',
-      body: 'Review second-by-second watch-time curves to identify where viewers dropped off. Review qualitative comments to discover what objections or questions were raised.',
-      meta: 'STRATEGIC GOAL: Objective audience data replaces subjective guesswork.'
+      badge: 'STEP 07 — MEASURE',
+      title: 'What signals tell us whether it worked?',
+      body: 'Look at real engagement signals: retention drop-off points, average watch time, save-to-reach ratio, and qualitative comments to understand what actually resonated with viewers.',
+      meta: 'PRACTICAL FOCUS: Objective feedback from real viewers to learn what worked.'
     },
     {
-      badge: 'STEP 08 — RAPID SPRINT ITERATION',
-      title: 'Compounding Creative Learnings Into the Next Production Sprint',
-      body: 'Double down on winning hooks, spin off popular comment threads into standalone videos, and tighten visual pacing where drop-offs occurred in previous batches.',
-      meta: 'STRATEGIC GOAL: Continuous creative improvement cycle across 120+ video iterations.'
+      badge: 'STEP 08 — ITERATE',
+      title: 'What should we change in the next piece?',
+      body: 'Take what the audience and comments revealed and apply it directly to the next batch: tighten pacing where viewers dropped off, turn top comments into new videos, and double down on winning formats.',
+      meta: 'PRACTICAL FOCUS: Continuous improvement grounded in real performance.'
     }
   ];
 
@@ -488,86 +486,19 @@ function initStrategyInspector() {
 }
 
 /* ==========================================================================
-   INTERACTIVE AARRR FUNNEL INSPECTOR
-   ========================================================================== */
-function initAARRRFunnel() {
-  const cards = document.querySelectorAll('.aarrr-card');
-  if (!cards.length) return;
-
-  const funnelDetails = {
-    acquisition: {
-      badge: 'STAGE 01 — ACQUISITION',
-      title: 'Top-of-Funnel Professional Discovery',
-      text: 'LinkedIn acquires users through organic SEO indexing of public profiles and job postings, as well as high-conversion email invite loops when existing members sync address books.'
-    },
-    activation: {
-      badge: 'STAGE 02 — ACTIVATION (PROPOSED EXPERIMENT)',
-      title: 'Goal-Based Adaptive Onboarding Flow',
-      text: 'The primary bottleneck for early-career professionals is an empty feed. Proposed experiment guides users to pick their primary career goal on Day 1, instantly curating high-signal creators and campus alumni to reach the "Aha!" moment in under 3 minutes.'
-    },
-    retention: {
-      badge: 'STAGE 03 — RETENTION',
-      title: 'Forming Daily Professional Habits',
-      text: 'Sustained by algorithmic relevance, industry newsletters, comment threads, and milestone notifications (work anniversaries, job switches) that prompt organic return visits.'
-    },
-    revenue: {
-      badge: 'STAGE 04 — REVENUE',
-      title: 'Multi-Tiered Monetization Architecture',
-      text: 'Monetized through individual subscriptions (LinkedIn Premium Career/Business), enterprise B2B tools (Recruiter & Sales Navigator), and targeted Sponsored InMail/Feed campaigns.'
-    },
-    referral: {
-      badge: 'STAGE 05 — REFERRAL',
-      title: 'Organic Network Multiplier Loops',
-      text: 'Referrals are embedded into the core UX: "People You May Know" graph algorithms, post mentions, and viral career achievement sharing (e.g. "I am thrilled to announce...") that draw new visitors.'
-    }
-  };
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      cards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-
-      const stage = card.getAttribute('data-stage');
-      const info = funnelDetails[stage];
-      if (info) {
-        const titleEl = document.querySelector('.experiment-title');
-        const textEl = document.querySelector('.experiment-text');
-        if (titleEl && textEl && stage !== 'activation') {
-          titleEl.textContent = info.title;
-          textEl.textContent = info.text;
-        } else if (titleEl && textEl && stage === 'activation') {
-          titleEl.textContent = 'Goal-Driven Adaptive Onboarding Flow';
-          textEl.textContent = 'Instead of dropping new users into a cold, generic timeline with zero context, the user selects their immediate objective on Day 1:';
-        }
-      }
-    });
-  });
-}
-
-/* ==========================================================================
    ANIMATION SYSTEM 02: STATS COUNT-UP ON ENTERING VIEWPORT (★★★☆☆)
    ========================================================================== */
 function initStatsCountUp() {
   const statElements = document.querySelectorAll('.stat-counter');
   if (!statElements.length) return;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        obs.unobserve(el);
-        animateCounter(el);
-      }
-    });
-  }, { threshold: 0.25 });
-
-  statElements.forEach(el => observer.observe(el));
-
   function animateCounter(el) {
+    if (el.dataset.animated === 'true') return;
+    el.dataset.animated = 'true';
     const target = parseInt(el.getAttribute('data-target'), 10);
     if (isNaN(target)) return;
 
-    const duration = 1500;
+    const duration = 1200;
     const startTime = performance.now();
 
     function update(now) {
@@ -588,6 +519,24 @@ function initStatsCountUp() {
 
     requestAnimationFrame(update);
   }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        obs.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  statElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      animateCounter(el);
+    } else {
+      observer.observe(el);
+    }
+  });
 }
 
 /* ==========================================================================
@@ -762,44 +711,6 @@ function initSectionPageTransitions() {
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   sections.forEach(sec => observer.observe(sec));
-}
-
-/* ==========================================================================
-   HERO COCKPIT INTERACTIVE SWITCHER
-   ========================================================================== */
-function initHeroCockpit() {
-  const tabs = document.querySelectorAll('.cockpit-tab');
-  const views = {
-    metrics: document.getElementById('cockpitViewMetrics'),
-    preview: document.getElementById('cockpitViewPreview'),
-    formula: document.getElementById('cockpitViewFormula')
-  };
-
-  if (!tabs.length) return;
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-
-      const targetKey = tab.getAttribute('data-cockpit-tab');
-      Object.keys(views).forEach(key => {
-        const view = views[key];
-        if (!view) return;
-        if (key === targetKey) {
-          view.style.display = 'block';
-          view.classList.add('active');
-        } else {
-          view.style.display = 'none';
-          view.classList.remove('active');
-        }
-      });
-    });
-  });
 }
 
 /* ==========================================================================

@@ -943,10 +943,135 @@ code {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
-.hero-cockpit-card {
+.hero-cockpit-card,
+.hero-showcase-card {
   min-height: 440px;
   display: flex;
   flex-direction: column;
+}
+
+.hero-work-spotlight {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.15rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  transition: border-color var(--trans-fast), background var(--trans-fast);
+}
+
+.hero-work-spotlight:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 82, 66, 0.35);
+}
+
+.spotlight-thumb-wrap {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.spotlight-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.spotlight-play-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-coral);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 82, 66, 0.5);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-play-btn svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+}
+
+.hero-work-spotlight:hover .spotlight-play-btn {
+  transform: scale(1.1);
+}
+
+.spotlight-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  padding: 0.1rem 0.35rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.spotlight-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.spotlight-kicker {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-coral);
+  margin-bottom: 0.2rem;
+}
+
+.spotlight-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.spotlight-desc {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.spotlight-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-coral);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color var(--trans-fast);
+}
+
+.spotlight-link:hover {
+  color: var(--accent-coral-hover);
+  text-decoration: underline;
 }
 
 /* Cockpit Tabs Switcher Bar */
@@ -2917,11 +3042,28 @@ code {
   gap: 2rem;
 }
 
+.platform-grid-4col {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .platform-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .platform-grid-4col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .platform-column {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   transition: border-color var(--trans-fast);
@@ -2935,8 +3077,8 @@ code {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -2952,8 +3094,69 @@ code {
 }
 
 .instagram-column .plat-col-icon { color: #e1306c; }
+.tiktok-column .plat-col-icon { color: #25f4ee; }
 .youtube-column .plat-col-icon { color: #ff0000; }
 .linkedin-column .plat-col-icon { color: #0a66c2; }
+
+.plat-col-experience {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.68rem;
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Strategy Notion Card */
+.strategy-notion-card {
+  margin-top: 3rem;
+  background: rgba(14, 15, 20, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: border-color var(--trans-fast);
+}
+
+.strategy-notion-card:hover {
+  border-color: rgba(10, 102, 194, 0.4);
+}
+
+.strategy-notion-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.strategy-notion-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.25rem;
+}
+
+.strategy-notion-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 900px;
+}
+
+.strategy-notion-points {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--accent-coral);
+}
 
 .plat-col-title {
   font-family: var(--font-display);
