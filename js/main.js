@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagneticButtons();
   initWorkCardGlare();
   initWorkCursorSpotlight();
+  initLiveLocalTime();
+  initInteractiveCardSpotlight();
   initHorizontalScroll();
   initSmoothParallax();
   initBlurSharpReveal();
@@ -1100,6 +1102,56 @@ function initBlurSharpReveal() {
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   blurItems.forEach(item => observer.observe(item));
+}
+
+/* ==========================================================================
+   ANIMATION SYSTEM: REAL-TIME CANDIDATE TIMEZONE CLOCK (IST / UTC+5:30)
+   ========================================================================== */
+function initLiveLocalTime() {
+  const clockEl = document.getElementById('liveLocalTime');
+  if (!clockEl) return;
+
+  function updateClock() {
+    try {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+      const formatter = new Intl.DateTimeFormat('en-US', options);
+      const timeStr = formatter.format(now);
+      clockEl.textContent = `${timeStr} IST`;
+    } catch (e) {
+      clockEl.textContent = '11:30 AM IST';
+    }
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+/* ==========================================================================
+   ANIMATION SYSTEM: ACETERNITY UI CARD SPOTLIGHT EFFECT
+   ========================================================================== */
+function initInteractiveCardSpotlight() {
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isFinePointer) return;
+
+  const targetCards = document.querySelectorAll(
+    '.idea-step-card, .gemini-pillar-card, .lemon-cred-card, .case-header-card, .contact-card, .strategy-notion-card'
+  );
+  targetCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = Math.round(e.clientX - rect.left);
+      const y = Math.round(e.clientY - rect.top);
+      card.style.setProperty('--card-mouse-x', `${x}px`);
+      card.style.setProperty('--card-mouse-y', `${y}px`);
+    });
+  });
 }
 
 

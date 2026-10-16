@@ -312,31 +312,139 @@ code {
 }
 
 /* ==========================================================================
-   TOP STATUS BAR
+   TOP STATUS BAR (EDITORIAL TICKER / LIVE STATUS CAPSULE)
    ========================================================================== */
 .top-status-bar {
   background-color: var(--bg-surface-elevated);
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 101;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
+.top-status-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.top-status-left,
+.top-status-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Dual-ring pulsing radar dot (Aceternity UI live ping pattern) */
+.status-ping-wrap {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-ping-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(16, 185, 129, 0.4);
+  animation: pingRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.status-ping-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: #10b981;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-  animation: pulseDot 2s infinite ease-in-out;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
 }
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+@keyframes pingRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(2.4); opacity: 0; }
+}
+
+.top-status-badge {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.top-status-sep {
+  color: var(--border-strong);
+  font-weight: 700;
+}
+
+.top-status-role {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.top-status-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.loc-pin-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--accent-coral);
+}
+
+.top-status-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.clock-tz {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .top-status-right {
+    display: none;
+  }
+  .top-status-inner {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-status-bar {
+    height: 34px;
+    font-size: 0.68rem;
+  }
+  .top-status-role {
+    display: none;
+  }
+  .top-status-inner .top-status-sep:first-of-type {
+    display: none;
+  }
 }
 
 /* ==========================================================================
-   STICKY HEADER & NAV
+   STICKY HEADER & NAV (Aceternity UI Glass & Floating Dock)
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -383,11 +491,12 @@ code {
   background: #ffffff;
   flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(194, 84, 56, 0.2);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .brand-logo:hover .brand-avatar-wrap {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px rgba(194, 84, 56, 0.22);
 }
 
 .brand-avatar-img {
@@ -418,57 +527,156 @@ code {
   color: var(--accent-coral);
 }
 
+/* Aceternity UI Floating Dock / Nav Container */
 .desktop-nav .nav-list {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 0.35rem;
+  padding: 0.25rem 0.4rem;
+  background: rgba(28, 25, 23, 0.03);
+  border: 1px solid rgba(28, 25, 23, 0.06);
+  border-radius: var(--radius-pill);
+}
+
+/* Aceternity UI Smooth Sliding Active Pill Indicator */
+.nav-active-indicator {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 0;
+  height: calc(100% - 6px);
+  background: #FFFFFF;
+  border: 1px solid rgba(194, 84, 56, 0.25);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 8px rgba(28, 25, 23, 0.05);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  list-style: none;
 }
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  z-index: 2;
+  transition: color var(--trans-fast);
+  display: block;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--text-primary);
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--accent-coral);
+.nav-link.active {
+  color: var(--accent-coral);
+  font-weight: 700;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .btn-resume-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--accent-coral);
   background: var(--accent-coral-light);
   border: 1px solid rgba(194, 84, 56, 0.3);
-  padding: 0.5rem 0.95rem;
-  border-radius: var(--radius-sm);
+  padding: 0.52rem 1rem;
+  border-radius: var(--radius-pill);
   transition: all var(--trans-fast);
 }
 
 .btn-resume-nav:hover {
   background: var(--accent-coral);
   color: #fff;
+  border-color: var(--accent-coral);
+}
+
+.btn-resume-nav .btn-arrow {
+  width: 0.85rem;
+  height: 0.85rem;
+  transition: transform var(--trans-fast);
+}
+
+.btn-resume-nav:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Aceternity UI Shimmer Button */
+.btn-shimmer {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(28, 25, 23, 0.16);
+  border-radius: var(--radius-pill);
+  padding: 0.52rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  overflow: hidden;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--trans-fast), transform var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(194, 84, 56, 0.35),
+    transparent 30%
+  );
+  animation: rotateShimmer 4s linear infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #FFFFFF;
+  border-radius: var(--radius-pill);
+  z-index: -1;
+  transition: background-color var(--trans-fast);
+}
+
+.btn-shimmer:hover {
+  border-color: var(--accent-coral);
+  box-shadow: 0 4px 16px rgba(194, 84, 56, 0.18);
+}
+
+.btn-shimmer:hover::after {
+  background: #FFF9F6;
+}
+
+@keyframes rotateShimmer {
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 /* Mobile Menu Button */
@@ -4089,4 +4297,42 @@ code {
   .hero-cta-group .btn {
     width: 100%;
   }
+}
+
+/* ==========================================================================
+   ACETERNITY UI & SKIPER UI: INTERACTIVE CARD SPOTLIGHT EFFECT
+   ========================================================================== */
+.idea-step-card,
+.gemini-pillar-card,
+.lemon-cred-card,
+.case-header-card,
+.contact-card,
+.strategy-notion-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.idea-step-card::before,
+.gemini-pillar-card::before,
+.lemon-cred-card::before,
+.case-header-card::before,
+.contact-card::before,
+.strategy-notion-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(380px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(194, 84, 56, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.idea-step-card:hover::before,
+.gemini-pillar-card:hover::before,
+.lemon-cred-card:hover::before,
+.case-header-card:hover::before,
+.contact-card:hover::before,
+.strategy-notion-card:hover::before {
+  opacity: 1;
 }

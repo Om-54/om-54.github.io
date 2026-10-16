@@ -57,24 +57,33 @@
 </head>
 <body class="site-body">
 
-  <!-- TOP STATUS BANNER: CANDIDATE STATUS & REMOTE AVAILABILITY -->
-  <aside class="top-status-bar" aria-label="Availability Status">
-    <div class="container flex-between py-2 text-xs font-mono tracking-wider">
-      <div class="flex-center gap-2">
-        <span class="status-dot"></span>
-        <span>OPEN FOR FULL-TIME REMOTE ROLES</span>
-        <span class="hidden-sm">•</span>
-        <span class="hidden-sm">Social Media Strategist / Content Strategist</span>
+  <!-- TOP STATUS BANNER: CANDIDATE STATUS & REAL-TIME AVAILABILITY -->
+  <aside class="top-status-bar" aria-label="Availability & Location Status">
+    <div class="container top-status-inner">
+      <div class="top-status-left">
+        <span class="status-ping-wrap" aria-hidden="true">
+          <span class="status-ping-ring"></span>
+          <span class="status-ping-dot"></span>
+        </span>
+        <span class="top-status-badge font-mono">AVAILABLE FOR FULL-TIME ROLES</span>
+        <span class="top-status-sep font-mono" aria-hidden="true">•</span>
+        <span class="top-status-role font-mono">REMOTE / HYBRID WORLDWIDE</span>
       </div>
-      <div class="flex-center gap-4 hidden-md">
-        <span>B.Tech YCCE Nagpur '27</span>
-        <span>•</span>
-        <span>Nagpur, India (UTC+5:30)</span>
+      <div class="top-status-right font-mono">
+        <span class="top-status-loc">
+          <svg class="loc-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+          NAGPUR, INDIA
+        </span>
+        <span class="top-status-sep" aria-hidden="true">•</span>
+        <span class="top-status-clock" id="topStatusClock" title="Candidate Local Time (IST / UTC+5:30)">
+          <span class="clock-time" id="liveLocalTime">11:24:35 AM IST</span>
+          <span class="clock-tz">(UTC+5:30)</span>
+        </span>
       </div>
     </div>
   </aside>
 
-  <!-- STICKY HEADER NAVIGATION -->
+  <!-- STICKY HEADER NAVIGATION (Aceternity UI Glass & Floating Dock) -->
   <header class="site-header" id="header">
     <div class="container nav-inner">
       <a href="#hero" class="brand-logo" aria-label="Omprakash Rahangdale Home">
@@ -87,7 +96,7 @@
         </div>
       </a>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Nav with Floating Glass Pill Indicator -->
       <nav class="desktop-nav" aria-label="Main Navigation">
         <ul class="nav-list">
           <li><a href="#work" class="nav-link">WORK</a></li>
@@ -98,10 +107,15 @@
         </ul>
       </nav>
 
-      <!-- Right Action CTA -->
+      <!-- Right Action CTAs (Magnetic & Shimmer Buttons) -->
       <div class="nav-actions">
-        <a href="assets/Omprakash_Rahangdale_Resume.pdf" download="Omprakash_Rahangdale_Resume.pdf" class="btn-resume-nav hidden-xs">RESUME ↗</a>
-        <a href="#contact" class="btn btn-outline-sm hidden-xs">LET'S CONNECT</a>
+        <a href="assets/Omprakash_Rahangdale_Resume.pdf" download="Omprakash_Rahangdale_Resume.pdf" class="btn-resume-nav magnetic-btn hidden-xs">
+          <span>RESUME</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline-sm btn-shimmer magnetic-btn hidden-xs">
+          <span>LET'S CONNECT</span>
+        </a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
