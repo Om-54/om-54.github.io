@@ -44,8 +44,8 @@
   /* Spacing */
   --container-max: 1240px;
   --container-padding: 1.5rem;
-  --section-spacing: 6.5rem;
-  --section-spacing-sm: 3.5rem;
+  --section-spacing: 3.75rem;
+  --section-spacing-sm: 2.25rem;
 
   /* Transitions */
   --trans-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -497,7 +497,7 @@ code {
 
 /* Section Header Shared */
 .section-title-wrap {
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
 }
 
 .editorial-badge {
@@ -1082,7 +1082,7 @@ code {
    HERO SECTION (SECTION 4 & 5) — REDESIGNED EDITORIAL CANVAS
    ========================================================================== */
 .hero-section {
-  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 3.8vw, 2.85rem);
   padding-bottom: 0;
   position: relative;
   border-bottom: 1px solid var(--border-subtle);
@@ -1111,7 +1111,7 @@ code {
 .hero-container-rel {
   position: relative;
   z-index: 1;
-  padding-bottom: clamp(2.5rem, 4.5vw, 3.5rem);
+  padding-bottom: clamp(1.75rem, 3vw, 2.25rem);
 }
 
 /* 2-Column Editorial Grid */
@@ -1255,7 +1255,7 @@ code {
   color: var(--text-secondary);
   font-weight: 600;
   letter-spacing: 0.06em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   opacity: 0;
   transform: translateY(10px);
   animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.50s forwards;
@@ -1277,7 +1277,7 @@ code {
   color: var(--text-primary);
   font-weight: 500;
   max-width: 520px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
   opacity: 0;
   transform: translateY(10px);
   animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.50s forwards;
@@ -1325,7 +1325,7 @@ code {
   font-size: 0.74rem;
   letter-spacing: 0.06em;
   color: var(--text-secondary);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
   padding: 0.55rem 0.95rem;
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
@@ -1351,7 +1351,7 @@ code {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   opacity: 0;
   transform: translateY(10px);
   animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.80s forwards;
@@ -1860,8 +1860,8 @@ code {
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
   align-items: center;
   gap: 1.25rem;
-  margin-top: 3.5rem;
-  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  padding: 1.15rem 1.75rem;
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -2075,7 +2075,7 @@ code {
 }
 
 .filter-tabs-container {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .filter-tabs {
@@ -2084,7 +2084,7 @@ code {
   flex-wrap: wrap;
   gap: 0.5rem;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1rem;
+  padding-bottom: 0.85rem;
 }
 
 .filter-tab {
@@ -2116,8 +2116,8 @@ code {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.35rem;
-  max-width: 960px;
-  margin: 0 auto 3.5rem auto;
+  width: 100%;
+  margin: 0;
 }
 
 .work-card {
@@ -2147,19 +2147,19 @@ code {
 
 /* Calibrated Thumbnail Framing */
 .work-media-container.ratio-9-16 {
-  aspect-ratio: 9 / 14;
-  max-height: 380px;
+  aspect-ratio: 9 / 13;
+  max-height: 340px;
   width: 100%;
 }
 
 .work-media-container.ratio-9-16 .work-img {
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 20%;
 }
 
 .work-media-container.ratio-16-9 {
   aspect-ratio: 16 / 9;
-  max-height: 200px;
+  max-height: 210px;
   width: 100%;
 }
 
@@ -2344,7 +2344,7 @@ code {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: clamp(1.5rem, 3vw, 2.5rem);
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
   box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04);
 }
 
@@ -4414,8 +4414,8 @@ code {
 
   .work-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 640px;
-    margin: 0 auto 3rem auto;
+    width: 100%;
+    margin: 0;
     gap: 1.25rem;
   }
 
@@ -4533,8 +4533,9 @@ code {
 
   .work-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
-    margin: 0 auto 2.5rem auto;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
     gap: 1.25rem;
   }
 
