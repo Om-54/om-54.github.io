@@ -8,7 +8,7 @@
 /* --- CSS Variables / Design Tokens (Editorial Light System) --- */
 :root {
   /* Warm Light Color Architecture */
-  --bg-obsidian: #FAF8F5;          /* Warm Ivory / Off-White Canvas */
+  --bg-obsidian: #F8F7F3;          /* Warm Ivory / Off-White Canvas */
   --bg-surface: #FFFFFF;           /* Crisp Pure White for Cards & Containers */
   --bg-surface-elevated: #F3EFE8;  /* Soft Warm Linen Cream for Alternating Sections */
   --bg-surface-hover: #F8F5F0;     /* Subtle Warm Hover State */
@@ -17,8 +17,8 @@
   --border-strong: rgba(28, 25, 23, 0.16);
   --border-focus: #C25438;
   
-  --text-primary: #181716;         /* Deep Rich Charcoal / Ink Typography */
-  --text-secondary: #54514D;       /* Warm Slate / Highly Readable Body Text */
+  --text-primary: #111111;         /* Deep Rich Charcoal / Ink Typography */
+  --text-secondary: #666666;       /* Warm Slate / Highly Readable Body Text */
   --text-tertiary: #787570;        /* Muted Charcoal for Supporting Details */
   --text-muted: #9E9B95;           /* Subtle Micro Metadata */
 
@@ -299,8 +299,16 @@ code {
   transition: transform var(--trans-fast);
 }
 
-.btn-primary:hover .btn-arrow {
-  transform: translate(2px, -2px);
+.btn-primary:hover .btn-arrow,
+.magnetic-btn:hover .btn-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Magnetic Button Interactions */
+.magnetic-btn {
+  position: relative;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow var(--trans-fast), background-color var(--trans-fast);
 }
 
 /* ==========================================================================
@@ -334,7 +342,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(250, 248, 245, 0.94);
+  background-color: rgba(248, 247, 243, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
@@ -345,11 +353,16 @@ code {
   box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04);
 }
 
+.site-header.scrolled .nav-inner {
+  height: 56px;
+}
+
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 68px;
+  transition: height var(--trans-smooth);
 }
 
 .brand-logo {
@@ -747,6 +760,19 @@ code {
   font-weight: 700;
 }
 
+/* 4. Short Description */
+.hero-short-desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--text-primary);
+  font-weight: 500;
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.50s forwards;
+}
+
 /* 5. Supporting Quote */
 .hero-supporting-quote {
   font-family: var(--font-serif);
@@ -993,8 +1019,8 @@ code {
 .canvas-custom-cursor {
   position: absolute;
   pointer-events: none;
-  width: 74px;
-  height: 74px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--accent-coral);
   color: #FFFFFF;
@@ -1007,16 +1033,33 @@ code {
   justify-content: center;
   text-align: center;
   z-index: 50;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%);
   opacity: 0;
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease;
-  box-shadow: 0 8px 24px rgba(194, 84, 56, 0.45);
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), height 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(194, 84, 56, 0.35);
   line-height: 1.1;
-  padding: 6px;
+  padding: 0;
+  overflow: hidden;
 }
 
+.canvas-custom-cursor .cursor-label {
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.hero-media-canvas.cursor-visible .canvas-custom-cursor,
 .hero-media-canvas.cursor-active .canvas-custom-cursor {
-  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.hero-media-canvas.cursor-hover .canvas-custom-cursor {
+  width: 76px;
+  height: 76px;
+  box-shadow: 0 8px 24px rgba(194, 84, 56, 0.45);
+}
+
+.hero-media-canvas.cursor-hover .canvas-custom-cursor .cursor-label {
   opacity: 1;
 }
 
@@ -1726,6 +1769,98 @@ code {
 .work-tools {
   font-size: 0.72rem;
   color: var(--text-tertiary);
+}
+
+/* Compact Editorial Work Card (Real Work > Decoration) */
+.work-card.compact-card {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  box-shadow: 0 2px 10px rgba(28, 25, 23, 0.03);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+  position: relative;
+  perspective: 1000px;
+}
+
+.work-card.compact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(194, 84, 56, 0.35);
+  box-shadow: 0 12px 28px rgba(28, 25, 23, 0.08);
+}
+
+.work-card.compact-card .work-card-body {
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.work-card.compact-card .work-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.work-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: rgba(24, 23, 22, 0.82);
+  color: #FFFFFF;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 3;
+}
+
+/* Card Glare effect */
+.card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.work-card:hover .card-glare {
+  opacity: 1;
+}
+
+.work-card-project {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-coral);
+  text-transform: uppercase;
+}
+
+.work-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.work-meta-sep {
+  color: var(--border-strong);
+}
+
+.work-meta-format {
+  color: var(--text-tertiary);
+}
+
+.work-meta-role {
+  color: var(--text-secondary);
 }
 
 /* ==========================================================================

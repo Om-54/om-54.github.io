@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoHoverInteractions();
   initMagneticPills();
   initMagneticButtons();
+  initWorkCardGlare();
   initWorkCursorSpotlight();
   initHorizontalScroll();
   initSmoothParallax();
@@ -784,8 +785,8 @@ function initHeroCanvasParallax() {
 
     items.forEach(item => {
       const depth = parseFloat(item.getAttribute('data-parallax-depth')) || 0.05;
-      const transX = (currentX * depth * 80).toFixed(2);
-      const transY = (currentY * depth * 80).toFixed(2);
+      const transX = (currentX * depth * 200).toFixed(2);
+      const transY = (currentY * depth * 200).toFixed(2);
       item.style.transform = `translate3d(${transX}px, ${transY}px, 0)`;
     });
 
@@ -840,7 +841,7 @@ function initHeroCanvasCursor() {
     cursor.style.left = `${cursorX.toFixed(1)}px`;
     cursor.style.top = `${cursorY.toFixed(1)}px`;
 
-    if (canvas.classList.contains('cursor-active')) {
+    if (canvas.classList.contains('cursor-visible') || canvas.classList.contains('cursor-hover') || canvas.classList.contains('cursor-active')) {
       rafId = requestAnimationFrame(renderCursor);
     } else {
       rafId = null;
@@ -848,7 +849,7 @@ function initHeroCanvasCursor() {
   }
 
   canvas.addEventListener('mouseenter', (e) => {
-    canvas.classList.add('cursor-active');
+    canvas.classList.add('cursor-visible');
     const rect = canvas.getBoundingClientRect();
     cursorX = e.clientX - rect.left;
     cursorY = e.clientY - rect.top;
@@ -867,10 +868,12 @@ function initHeroCanvasCursor() {
     // Check if hovering over element with custom cursor label
     const hoveredItem = e.target.closest('[data-cursor]');
     if (hoveredItem) {
+      canvas.classList.add('cursor-hover');
       const label = hoveredItem.getAttribute('data-cursor');
       if (label) cursorLabel.textContent = label;
     } else {
-      cursorLabel.textContent = 'PLAY →';
+      canvas.classList.remove('cursor-hover');
+      cursorLabel.textContent = '';
     }
 
     if (!rafId) {
@@ -879,7 +882,7 @@ function initHeroCanvasCursor() {
   });
 
   canvas.addEventListener('mouseleave', () => {
-    canvas.classList.remove('cursor-active');
+    canvas.classList.remove('cursor-visible', 'cursor-hover', 'cursor-active');
   });
 }
 
@@ -932,14 +935,14 @@ function initMagneticButtons() {
   const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!isFinePointer) return;
 
-  const buttons = document.querySelectorAll('.btn, .btn-hero-reel, .cockpit-tab, .filter-tab');
+  const buttons = document.querySelectorAll('.magnetic-btn, .btn, .btn-hero-reel, .cockpit-tab, .filter-tab');
   buttons.forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const relX = e.clientX - (rect.left + rect.width / 2);
       const relY = e.clientY - (rect.top + rect.height / 2);
-      const pullX = (relX * 0.16).toFixed(1);
-      const pullY = (relY * 0.16).toFixed(1);
+      const pullX = Math.max(-5, Math.min(5, relX * 0.16)).toFixed(1);
+      const pullY = Math.max(-5, Math.min(5, relY * 0.16)).toFixed(1);
       btn.style.transform = `translate(${pullX}px, ${pullY}px)`;
     });
 
@@ -949,6 +952,38 @@ function initMagneticButtons() {
       setTimeout(() => {
         btn.style.transition = '';
       }, 350);
+    });
+  });
+}
+
+/* ==========================================================================
+   ANIMATION SYSTEM: WORK CARD 3D TILT & GLARE EFFECT
+   ========================================================================== */
+function initWorkCardGlare() {
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isFinePointer) return;
+
+  const cards = document.querySelectorAll('.work-card.compact-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const normX = (e.clientX - rect.left) / rect.width;
+      const normY = (e.clientY - rect.top) / rect.height;
+
+      // Update glare position
+      card.style.setProperty('--glare-x', `${(normX * 100).toFixed(1)}%`);
+      card.style.setProperty('--glare-y', `${(normY * 100).toFixed(1)}%`);
+
+      // Subtle 3D tilt
+      const tiltX = ((normY - 0.5) * -4).toFixed(2);
+      const tiltY = ((normX - 0.5) * 4).toFixed(2);
+      card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.removeProperty('--glare-x');
+      card.style.removeProperty('--glare-y');
     });
   });
 }
