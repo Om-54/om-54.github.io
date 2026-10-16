@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCategoryCounts();
   initStrategyInspector();
   initHeroAmbientSpotlight();
+  initHeroCanvasParallax();
+  initHeroCanvasCursor();
+  initHeroInlineVideoObserver();
+  initHeroScrollTransition();
 
   // The 12 Animation System Initializers (Refined, Touch-Safe & Editorial)
   initStatsCountUp();
@@ -731,6 +735,175 @@ function initHeroAmbientSpotlight() {
       ticking = true;
     }
   });
+}
+
+/* ==========================================================================
+   HERO INTERACTIVE CONTENT CANVAS: PARALLAX DEPTH & CURSOR (TOUCH-SAFE)
+   ========================================================================== */
+function initHeroCanvasParallax() {
+  const canvas = document.getElementById('heroMediaCanvas');
+  if (!canvas) return;
+
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isFinePointer) return;
+
+  const items = canvas.querySelectorAll('.canvas-item[data-parallax-depth]');
+  if (!items.length) return;
+
+  let mouseTargetX = 0;
+  let mouseTargetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let isHovered = false;
+  let animFrameId = null;
+
+  function updateParallax() {
+    // Smooth lerp interpolation to eliminate jitter
+    const ease = 0.08;
+    currentX += (mouseTargetX - currentX) * ease;
+    currentY += (mouseTargetY - currentY) * ease;
+
+    items.forEach(item => {
+      const depth = parseFloat(item.getAttribute('data-parallax-depth')) || 0.05;
+      const transX = (currentX * depth * 80).toFixed(2);
+      const transY = (currentY * depth * 80).toFixed(2);
+      item.style.transform = `translate3d(${transX}px, ${transY}px, 0)`;
+    });
+
+    // Continue loop while hovered or until settled
+    if (isHovered || Math.abs(mouseTargetX - currentX) > 0.001 || Math.abs(mouseTargetY - currentY) > 0.001) {
+      animFrameId = requestAnimationFrame(updateParallax);
+    } else {
+      animFrameId = null;
+    }
+  }
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    // Normalized offset between -0.5 and 0.5 from center of canvas
+    mouseTargetX = ((e.clientX - rect.left) / rect.width) - 0.5;
+    mouseTargetY = ((e.clientY - rect.top) / rect.height) - 0.5;
+    isHovered = true;
+
+    if (!animFrameId) {
+      animFrameId = requestAnimationFrame(updateParallax);
+    }
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    mouseTargetX = 0;
+    mouseTargetY = 0;
+    isHovered = false;
+    if (!animFrameId) {
+      animFrameId = requestAnimationFrame(updateParallax);
+    }
+  });
+}
+
+function initHeroCanvasCursor() {
+  const canvas = document.getElementById('heroMediaCanvas');
+  const cursor = document.getElementById('canvasCursor');
+  const cursorLabel = document.getElementById('canvasCursorLabel');
+  if (!canvas || !cursor || !cursorLabel) return;
+
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isFinePointer) return;
+
+  let cursorX = 0;
+  let cursorY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let rafId = null;
+
+  function renderCursor() {
+    cursorX += (targetX - cursorX) * 0.2;
+    cursorY += (targetY - cursorY) * 0.2;
+    cursor.style.left = `${cursorX.toFixed(1)}px`;
+    cursor.style.top = `${cursorY.toFixed(1)}px`;
+
+    if (canvas.classList.contains('cursor-active')) {
+      rafId = requestAnimationFrame(renderCursor);
+    } else {
+      rafId = null;
+    }
+  }
+
+  canvas.addEventListener('mouseenter', (e) => {
+    canvas.classList.add('cursor-active');
+    const rect = canvas.getBoundingClientRect();
+    cursorX = e.clientX - rect.left;
+    cursorY = e.clientY - rect.top;
+    targetX = cursorX;
+    targetY = cursorY;
+    if (!rafId) {
+      rafId = requestAnimationFrame(renderCursor);
+    }
+  });
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    targetX = e.clientX - rect.left;
+    targetY = e.clientY - rect.top;
+
+    // Check if hovering over element with custom cursor label
+    const hoveredItem = e.target.closest('[data-cursor]');
+    if (hoveredItem) {
+      const label = hoveredItem.getAttribute('data-cursor');
+      if (label) cursorLabel.textContent = label;
+    } else {
+      cursorLabel.textContent = 'PLAY →';
+    }
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(renderCursor);
+    }
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    canvas.classList.remove('cursor-active');
+  });
+}
+
+function initHeroInlineVideoObserver() {
+  const video = document.getElementById('heroInlineVideo');
+  if (!video) return;
+
+  // Autoplay video when hero is intersecting, pause when out of view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {
+          video.muted = true;
+          video.play().catch(() => {});
+        });
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.15 });
+
+  observer.observe(video);
+}
+
+function initHeroScrollTransition() {
+  const canvas = document.getElementById('heroMediaCanvas');
+  const hero = document.getElementById('hero');
+  if (!canvas || !hero) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        if (scrollY < window.innerHeight) {
+          const shift = Math.min(scrollY * 0.08, 36);
+          canvas.style.transform = `translate3d(0, -${shift.toFixed(1)}px, 0)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
