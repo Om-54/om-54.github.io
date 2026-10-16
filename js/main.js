@@ -58,28 +58,26 @@ function initSiteIntroSequence() {
     if (isDismissed) return;
     isDismissed = true;
 
-    // Trigger curtain wipe reveal
+    // Trigger Mark Baroth split curtain wipe reveal
     intro.classList.add('intro-exiting');
 
     // Unlock body scrolling
     document.body.classList.remove('intro-active');
-
-    // Trigger hero video playback smoothly as curtains part
-    const heroVideo = document.getElementById('heroInlineVideo');
-    if (heroVideo) {
-      setTimeout(() => {
-        heroVideo.play().catch(() => {
-          heroVideo.muted = true;
-          heroVideo.play().catch(() => {});
-        });
-      }, 150);
-    }
 
     // Remove overlay completely from accessibility tree and flow
     setTimeout(() => {
       intro.classList.add('intro-completed');
       intro.setAttribute('aria-hidden', 'true');
     }, 700);
+
+    // Initiate hero video playback smoothly upon curtain open
+    const heroVideo = document.getElementById('heroInlineVideo');
+    if (heroVideo) {
+      heroVideo.play().catch(() => {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+      });
+    }
   }
 
   // Sequence duration: ~1.4s typography presentation, then 0.65s curtain reveal = ~2.0s total
