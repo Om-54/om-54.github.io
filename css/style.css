@@ -102,22 +102,57 @@ body.intro-active {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  background-color: #FAF8F5;
-  background-image: 
-    linear-gradient(to right, rgba(28, 25, 23, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 25, 23, 0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
   user-select: none;
   cursor: pointer;
-  will-change: transform;
+  background: transparent;
+  overflow: hidden;
 }
 
+/* Mark Baroth Architectural Split Curtains / Windows */
+.intro-curtain {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50.5vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #FAF8F5;
+  background-image: 
+    linear-gradient(to right, rgba(28, 25, 23, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 25, 23, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: 1;
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.intro-curtain.is-left {
+  left: 0;
+  border-right: 1px solid rgba(28, 25, 23, 0.06);
+}
+
+.intro-curtain.is-right {
+  right: 0;
+  border-left: 1px solid rgba(28, 25, 23, 0.06);
+}
+
+/* Split Reveal Curtain Movement */
+.site-intro-overlay.intro-exiting .intro-curtain.is-left {
+  transform: translate3d(-101%, 0, 0);
+}
+
+.site-intro-overlay.intro-exiting .intro-curtain.is-right {
+  transform: translate3d(101%, 0, 0);
+}
+
+/* Central Editorial Canvas & Typography Core */
 .intro-canvas {
   position: relative;
+  z-index: 10;
   width: 100%;
   height: 100%;
   display: flex;
@@ -125,6 +160,7 @@ body.intro-active {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  pointer-events: none;
 }
 
 .intro-bg-ambient {
@@ -142,7 +178,7 @@ body.intro-active {
 
 .intro-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   max-width: 900px;
   width: 100%;
@@ -150,7 +186,7 @@ body.intro-active {
   flex-direction: column;
   align-items: center;
   transform: translateY(0);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
 }
 
 /* 1. Meta Tag */
@@ -197,7 +233,7 @@ body.intro-active {
 
 /* 2. Candidate Name Mask Reveal */
 .intro-name-wrap {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   width: 100%;
 }
 
@@ -208,14 +244,14 @@ body.intro-active {
 
 .intro-name {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5.8vw, 4.4rem);
+  font-size: clamp(2.4rem, 6.2vw, 4.8rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-primary);
   margin: 0;
-  padding: 0.15em 0;
+  padding: 0.12em 0;
   transform: translateY(115%);
   animation: introTextReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards;
 }
@@ -225,12 +261,13 @@ body.intro-active {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  align-items: center;
+  margin: 0.65rem 0 1.15rem;
 }
 
 .intro-line {
   width: 100%;
-  max-width: 240px;
+  max-width: 220px;
   height: 1.5px;
   background: var(--accent-coral);
   transform: scaleX(0);
@@ -245,9 +282,9 @@ body.intro-active {
 
 .intro-role {
   font-family: var(--font-mono);
-  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  font-size: clamp(0.78rem, 1.4vw, 0.98rem);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--accent-coral);
   margin: 0;
@@ -310,17 +347,16 @@ body.intro-active {
   }
 }
 
-/* Exiting Transition (Cinematic Curtain Wipe Reveal) */
-.site-intro-overlay.intro-exiting {
-  transform: translateY(-100%);
-  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
-  pointer-events: none;
+/* Dissolve & Exit */
+.site-intro-overlay.intro-exiting .intro-content {
+  transform: translateY(-20px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
 }
 
-.site-intro-overlay.intro-exiting .intro-content {
-  transform: translateY(-20px);
+.site-intro-overlay.intro-exiting .intro-footer {
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .site-intro-overlay.intro-completed {
@@ -342,7 +378,7 @@ body.intro-active {
 /* Responsive Scaling for Mobile */
 @media (max-width: 768px) {
   .intro-name {
-    font-size: clamp(1.65rem, 7vw, 2.4rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
     letter-spacing: -0.025em;
   }
   
@@ -352,7 +388,7 @@ body.intro-active {
   }
 
   .intro-line {
-    max-width: 180px;
+    max-width: 160px;
   }
 }
 
