@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSiteIntroSequence();
   initNavigation();
   initNavActiveIndicator();
   initPortfolioFilters();
@@ -30,6 +31,60 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlurSharpReveal();
   initSectionPageTransitions();
 });
+
+/* ==========================================================================
+   PREMIUM EDITORIAL FIRST-ENTRY INTRO ANIMATION (MARK BAROTH INSPIRED)
+   ========================================================================== */
+function initSiteIntroSequence() {
+  const intro = document.getElementById('siteIntroOverlay');
+  if (!intro) {
+    document.body.classList.remove('intro-active');
+    return;
+  }
+
+  // Instant bypass if user prefers reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    intro.classList.add('intro-completed');
+    document.body.classList.remove('intro-active');
+    return;
+  }
+
+  let isDismissed = false;
+
+  function dismissIntro() {
+    if (isDismissed) return;
+    isDismissed = true;
+
+    // Trigger curtain wipe reveal
+    intro.classList.add('intro-exiting');
+
+    // Unlock body scrolling
+    document.body.classList.remove('intro-active');
+
+    // Remove overlay completely from accessibility tree and flow
+    setTimeout(() => {
+      intro.classList.add('intro-completed');
+      intro.setAttribute('aria-hidden', 'true');
+    }, 700);
+  }
+
+  // Sequence duration: ~1.4s typography presentation, then 0.65s curtain reveal = ~2.0s total
+  const autoDismissTimer = setTimeout(dismissIntro, 1400);
+
+  // Click anywhere to skip instantly
+  intro.addEventListener('click', () => {
+    clearTimeout(autoDismissTimer);
+    dismissIntro();
+  });
+
+  // Keypress (Escape, Space, Enter) to skip
+  window.addEventListener('keydown', (e) => {
+    if (!isDismissed && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+      clearTimeout(autoDismissTimer);
+      dismissIntro();
+    }
+  }, { once: true });
+}
 
 /* ==========================================================================
    NAVIGATION & SCROLL SPY

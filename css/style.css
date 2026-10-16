@@ -88,6 +88,274 @@ body {
   min-height: 100vh;
 }
 
+/* ==========================================================================
+   PREMIUM EDITORIAL FIRST-ENTRY INTRO ANIMATION (MARK BAROTH INSPIRED)
+   ========================================================================== */
+body.intro-active {
+  overflow: hidden !important;
+}
+
+.site-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #FAF8F5;
+  background-image: 
+    linear-gradient(to right, rgba(28, 25, 23, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 25, 23, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  user-select: none;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.intro-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.intro-bg-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    650px circle at 50% 50%,
+    rgba(194, 84, 56, 0.06) 0%,
+    rgba(217, 119, 6, 0.025) 40%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(0);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+/* 1. Meta Tag */
+.intro-meta-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: introMetaFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+}
+
+.intro-meta-badge {
+  color: var(--accent-coral);
+  background: rgba(194, 84, 56, 0.08);
+  border: 1px solid rgba(194, 84, 56, 0.22);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.intro-meta-dot {
+  color: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+.intro-meta-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+}
+
+.intro-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #059669;
+}
+
+/* 2. Candidate Name Mask Reveal */
+.intro-name-wrap {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.intro-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.intro-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.8vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0.15em 0;
+  transform: translateY(115%);
+  animation: introTextReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards;
+}
+
+/* 3. Horizontal Editorial Accent Line */
+.intro-line-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.intro-line {
+  width: 100%;
+  max-width: 240px;
+  height: 1.5px;
+  background: var(--accent-coral);
+  transform: scaleX(0);
+  transform-origin: center center;
+  animation: introLineExpand 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
+}
+
+/* 4. Role Mask Reveal */
+.intro-role-wrap {
+  width: 100%;
+}
+
+.intro-role {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-coral);
+  margin: 0;
+  padding: 0.15em 0;
+  transform: translateY(115%);
+  animation: introTextReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.52s forwards;
+}
+
+/* 5. Bottom Hint */
+.intro-footer {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+  opacity: 0;
+  animation: introFooterFadeIn 0.5s ease 0.6s forwards;
+  pointer-events: none;
+}
+
+/* Keyframes */
+@keyframes introMetaFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introTextReveal {
+  0% {
+    transform: translateY(115%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes introLineExpand {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes introFooterFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Exiting Transition (Cinematic Curtain Wipe Reveal) */
+.site-intro-overlay.intro-exiting {
+  transform: translateY(-100%);
+  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: none;
+}
+
+.site-intro-overlay.intro-exiting .intro-content {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.site-intro-overlay.intro-completed {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .site-intro-overlay {
+    display: none !important;
+  }
+  body.intro-active {
+    overflow: auto !important;
+  }
+}
+
+/* Responsive Scaling for Mobile */
+@media (max-width: 768px) {
+  .intro-name {
+    font-size: clamp(1.65rem, 7vw, 2.4rem);
+    letter-spacing: -0.025em;
+  }
+  
+  .intro-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .intro-line {
+    max-width: 180px;
+  }
+}
+
 ::selection {
   background-color: var(--accent-coral);
   color: #ffffff;
