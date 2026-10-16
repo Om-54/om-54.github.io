@@ -89,308 +89,8 @@ body {
 }
 
 /* ==========================================================================
-   PREMIUM EDITORIAL FIRST-ENTRY INTRO ANIMATION (MARK BAROTH INSPIRED)
+   SELECTION & ACCESSIBILITY
    ========================================================================== */
-body.intro-active {
-  overflow: hidden !important;
-}
-
-.site-intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-  user-select: none;
-  cursor: pointer;
-  background: transparent;
-  overflow: hidden;
-}
-
-/* Mark Baroth Architectural Split Curtains / Windows */
-.intro-curtain {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 50.5vw;
-  height: 100vh;
-  height: 100dvh;
-  background-color: #FAF8F5;
-  background-image: 
-    linear-gradient(to right, rgba(28, 25, 23, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 25, 23, 0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-  z-index: 1;
-  will-change: transform;
-  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.intro-curtain.is-left {
-  left: 0;
-  border-right: 1px solid rgba(28, 25, 23, 0.06);
-}
-
-.intro-curtain.is-right {
-  right: 0;
-  border-left: 1px solid rgba(28, 25, 23, 0.06);
-}
-
-/* Split Reveal Curtain Movement */
-.site-intro-overlay.intro-exiting .intro-curtain.is-left {
-  transform: translate3d(-101%, 0, 0);
-}
-
-.site-intro-overlay.intro-exiting .intro-curtain.is-right {
-  transform: translate3d(101%, 0, 0);
-}
-
-/* Central Editorial Canvas & Typography Core */
-.intro-canvas {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  pointer-events: none;
-}
-
-.intro-bg-ambient {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    650px circle at 50% 50%,
-    rgba(194, 84, 56, 0.06) 0%,
-    rgba(217, 119, 6, 0.025) 40%,
-    transparent 70%
-  );
-  z-index: 0;
-}
-
-.intro-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
-}
-
-/* 1. Meta Tag */
-.intro-meta-wrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--text-tertiary);
-  margin-bottom: 1.25rem;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: introMetaFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
-}
-
-.intro-meta-badge {
-  color: var(--accent-coral);
-  background: rgba(194, 84, 56, 0.08);
-  border: 1px solid rgba(194, 84, 56, 0.22);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-sm);
-}
-
-.intro-meta-dot {
-  color: var(--text-tertiary);
-  opacity: 0.6;
-}
-
-.intro-meta-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--text-secondary);
-}
-
-.intro-live-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #059669;
-}
-
-/* 2. Candidate Name Mask Reveal */
-.intro-name-wrap {
-  margin-bottom: 0.85rem;
-  width: 100%;
-}
-
-.intro-mask {
-  overflow: hidden;
-  display: block;
-}
-
-.intro-name {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6.2vw, 4.8rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin: 0;
-  padding: 0.12em 0;
-  transform: translateY(115%);
-  animation: introTextReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards;
-}
-
-/* 3. Horizontal Editorial Accent Line */
-.intro-line-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0.65rem 0 1.15rem;
-}
-
-.intro-line {
-  width: 100%;
-  max-width: 220px;
-  height: 1.5px;
-  background: var(--accent-coral);
-  transform: scaleX(0);
-  transform-origin: center center;
-  animation: introLineExpand 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
-}
-
-/* 4. Role Mask Reveal */
-.intro-role-wrap {
-  width: 100%;
-}
-
-.intro-role {
-  font-family: var(--font-mono);
-  font-size: clamp(0.78rem, 1.4vw, 0.98rem);
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent-coral);
-  margin: 0;
-  padding: 0.15em 0;
-  transform: translateY(115%);
-  animation: introTextReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.52s forwards;
-}
-
-/* 5. Bottom Hint */
-.intro-footer {
-  position: absolute;
-  bottom: 2rem;
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--text-tertiary);
-  opacity: 0;
-  animation: introFooterFadeIn 0.5s ease 0.6s forwards;
-  pointer-events: none;
-}
-
-/* Keyframes */
-@keyframes introMetaFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes introTextReveal {
-  0% {
-    transform: translateY(115%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes introLineExpand {
-  0% {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-
-@keyframes introFooterFadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.7;
-  }
-}
-
-/* Dissolve & Exit */
-.site-intro-overlay.intro-exiting .intro-content {
-  transform: translateY(-20px) scale(0.98);
-  opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
-}
-
-.site-intro-overlay.intro-exiting .intro-footer {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.site-intro-overlay.intro-completed {
-  display: none !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-}
-
-/* Prefers Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .site-intro-overlay {
-    display: none !important;
-  }
-  body.intro-active {
-    overflow: auto !important;
-  }
-}
-
-/* Responsive Scaling for Mobile */
-@media (max-width: 768px) {
-  .intro-name {
-    font-size: clamp(1.75rem, 7vw, 2.5rem);
-    letter-spacing: -0.025em;
-  }
-  
-  .intro-role {
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-  }
-
-  .intro-line {
-    max-width: 160px;
-  }
-}
 
 ::selection {
   background-color: var(--accent-coral);
@@ -905,13 +605,38 @@ code {
   flex-direction: column;
 }
 
-/* Status Pill Row */
+/* Status Pill & Candidate Eyebrow Reveal Row */
 .hero-status-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
+}
+
+.hero-intro-mask {
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-intro-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  display: inline-block;
+  transform: translateY(115%);
+  animation: heroEyebrowReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.hero-eyebrow-sep {
+  color: var(--text-tertiary);
+  font-size: 0.72rem;
+  opacity: 0;
+  animation: heroFadeIn 0.4s ease 0.25s forwards;
 }
 
 .hero-status-pill {
@@ -926,6 +651,9 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
 }
 
 .status-dot {
@@ -942,20 +670,9 @@ code {
   50% { opacity: 0.5; transform: scale(0.85); }
 }
 
-.hero-candidate-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--text-tertiary);
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-sm);
-}
-
-/* Mask Reveal Large Headline */
+/* 2. Headline with Overflow Mask Reveal */
 .hero-headline-wrap {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-headline {
@@ -977,24 +694,35 @@ code {
 
 .hero-line-inner {
   display: block;
-  transform: translateY(105%);
-  animation: heroMaskReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(115%);
+  animation: heroLineReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-headline .hero-line:nth-child(2) .hero-line-inner {
-  animation-delay: 0.12s;
+.hero-line-inner.hero-line-1 {
+  animation-delay: 0.35s;
 }
 
-@keyframes heroMaskReveal {
-  0% { transform: translateY(105%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+.hero-line-inner.hero-line-2 {
+  animation-delay: 0.60s;
 }
 
 .hero-accent-text {
   color: var(--accent-coral);
 }
 
-/* Subline Row */
+/* 3. Architectural / Editorial Horizon Line */
+.hero-architectural-line {
+  width: 100%;
+  max-width: 240px;
+  height: 1.5px;
+  background: var(--accent-coral);
+  margin: 0.85rem 0 1.25rem 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: heroLineExpand 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+}
+
+/* 4. Subline Row */
 .hero-subline-row {
   display: flex;
   align-items: center;
@@ -1004,9 +732,10 @@ code {
   color: var(--text-secondary);
   font-weight: 600;
   letter-spacing: 0.06em;
-  margin-bottom: 1.5rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.50s forwards;
 }
 
 .hero-subline-item {
@@ -1018,7 +747,7 @@ code {
   font-weight: 700;
 }
 
-/* Supporting Quote */
+/* 5. Supporting Quote */
 .hero-supporting-quote {
   font-family: var(--font-serif);
   font-size: clamp(1.2rem, 2vw, 1.65rem);
@@ -1029,15 +758,21 @@ code {
   border-left: 2.5px solid var(--accent-coral);
   padding-left: 1.15rem;
   margin: 0 0 1.25rem 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.60s forwards;
 }
 
-/* Bio Context Paragraph */
+/* 6. Bio Context Paragraph */
 .hero-bio-context {
   font-size: 0.92rem;
   line-height: 1.65;
   color: var(--text-secondary);
   max-width: 520px;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.35rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.65s forwards;
 }
 
 .hero-bio-context strong {
@@ -1045,13 +780,45 @@ code {
   font-weight: 600;
 }
 
-/* CTAs */
+/* 7. Key Proof Point (Visible without scrolling) */
+.hero-quick-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+  padding: 0.55rem 0.95rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.70s forwards;
+}
+
+.hero-quick-proof strong {
+  color: var(--accent-coral);
+  font-weight: 800;
+}
+
+.quick-proof-sep {
+  color: var(--border-strong);
+}
+
+/* 8. CTAs */
 .hero-cta-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.80s forwards;
 }
 
 .hero-btn-main {
@@ -1080,7 +847,7 @@ code {
   text-decoration: underline;
 }
 
-/* Platforms Strip */
+/* 9. Verified Platforms Strip */
 .hero-platform-strip {
   display: flex;
   align-items: center;
@@ -1088,6 +855,9 @@ code {
   gap: 0.85rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border-subtle);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.85s forwards;
 }
 
 .strip-label {
@@ -1166,7 +936,15 @@ code {
   align-items: center;
   justify-content: center;
   transition: box-shadow var(--trans-normal), border-color var(--trans-normal);
-  will-change: transform;
+  will-change: transform, clip-path, opacity;
+}
+
+/* Visual Work Crop & Expansion Reveal (1.00s -> 1.45s) */
+.hero-media-canvas.hero-canvas-animated {
+  opacity: 0;
+  clip-path: inset(6% 6% 6% 6% round var(--radius-md));
+  transform: scale(0.96);
+  animation: heroCanvasReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.00s forwards;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1363,6 +1141,9 @@ code {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
   z-index: 3;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroCardFloatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.20s forwards;
 }
 
 .canvas-item-tr:hover {
@@ -1384,6 +1165,9 @@ code {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
   z-index: 6;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroCardFloatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.30s forwards;
 }
 
 .canvas-item-bl:hover {
@@ -1405,6 +1189,9 @@ code {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
   z-index: 4;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroCardFloatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.40s forwards;
 }
 
 .canvas-item-br:hover {
@@ -1440,6 +1227,76 @@ code {
   border-radius: 2px;
   text-align: center;
   pointer-events: none;
+}
+
+/* ==========================================================================
+   HERO CHOREOGRAPHY ANIMATION KEYFRAMES (MARK BAROTH INSPIRED EDITORIAL PACING)
+   ========================================================================== */
+@keyframes heroEyebrowReveal {
+  0% { transform: translateY(115%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes heroLineReveal {
+  0% { transform: translateY(115%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes heroLineExpand {
+  0% { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes heroCanvasReveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(6% 6% 6% 6% round var(--radius-md));
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0% round var(--radius-md));
+    transform: scale(1);
+  }
+}
+
+@keyframes heroCardFloatIn {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes heroFadeUp {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Reduced Motion Override for Hero Choreography */
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro-eyebrow,
+  .hero-eyebrow-sep,
+  .hero-status-pill,
+  .hero-line-inner,
+  .hero-architectural-line,
+  .hero-media-canvas.hero-canvas-animated,
+  .canvas-item-tr,
+  .canvas-item-bl,
+  .canvas-item-br,
+  .hero-subline-row,
+  .hero-supporting-quote,
+  .hero-bio-context,
+  .hero-quick-proof,
+  .hero-cta-group,
+  .hero-platform-strip {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
 }
 
 /* ==========================================================================
